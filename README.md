@@ -1,5 +1,5 @@
-# state_machine
-State machine
+# state_machine [![Build Status](https://travis-ci.org/yglukhov/state_machine.svg?branch=master)](https://travis-ci.org/yglukhov/state_machine)
+Simple configurable state machine implementation
 
 # Usage
 ```nim
