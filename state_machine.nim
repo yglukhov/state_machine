@@ -38,10 +38,10 @@ proc transitionKey(fromState, toState: int16): int32 {.inline.} =
     (int32(fromState) shl 16) or toState
 
 proc addBeforeTransitionHandler(sm: var StateMachineBase, fromState, toState: int16, handler: TransitionHandlerBase) =
-    sm.beforeTransitionHandlers.mgetOrPut(transitionKey(fromState, toState), nil).safeAdd(handler)
+    sm.beforeTransitionHandlers.mgetOrPut(transitionKey(fromState, toState), @[]).safeAdd(handler)
 
 proc addAfterTransitionHandler(sm: var StateMachineBase, fromState, toState: int16, handler: TransitionHandlerBase) =
-    sm.afterTransitionHandlers.mgetOrPut(transitionKey(fromState, toState), nil).safeAdd(handler)
+    sm.afterTransitionHandlers.mgetOrPut(transitionKey(fromState, toState), @[]).safeAdd(handler)
 
 proc addBeforeTransitionHandler(sm: var StateMachineBase, fromState: int16, toStates: openarray[int16], handler: TransitionHandlerBase) =
     if toStates.len == 0:
